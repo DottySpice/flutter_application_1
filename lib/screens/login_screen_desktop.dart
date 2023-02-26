@@ -3,54 +3,65 @@ import 'package:social_login_buttons/social_login_buttons.dart';
 
 import '../widgets/loading_modal_widget.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class LoginScreenDesktop extends StatefulWidget {
+  const LoginScreenDesktop({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<LoginScreenDesktop> createState() => _LoginScreenState();
 }
 
 bool isLoading = false;
 
-final txtEmail = TextFormField(
-  decoration: InputDecoration(
-    label: Text('Email User'),
-    border: OutlineInputBorder(),
+final widthSize = 500.00;
+
+final txtEmail = SizedBox(
+  width: widthSize,
+  child: TextFormField(
+    decoration: InputDecoration(
+      label: Text('Email User'),
+      border: OutlineInputBorder(),
+    ),
   ),
 );
 
-final txtPass = TextFormField(
-  decoration: InputDecoration(
-    label: Text('Password User'),
-    border: OutlineInputBorder(),
+final txtPass = SizedBox(
+  width: widthSize,
+  child: TextFormField(
+    decoration: InputDecoration(
+      label: Text('Password User'),
+      border: OutlineInputBorder(),
+    ),
   ),
 );
 
 final btnGoogle = SocialLoginButton(
   buttonType: SocialLoginButtonType.google,
+  width: widthSize,
   onPressed: () {},
 );
 
 final btnFacebook = SocialLoginButton(
   buttonType: SocialLoginButtonType.facebook,
+  width: widthSize,
   onPressed: () {},
 );
 
 final btnGithub = SocialLoginButton(
   buttonType: SocialLoginButtonType.github,
+  width: widthSize,
   onPressed: () {},
 );
 
-final spaceHorizontal = SizedBox(height: 10);
+final spaceHorizontal = SizedBox(height: 20);
 
 final imgLogo = Image.asset(
   'assets/logo.png',
-  height: 100,
+  height: 150,
 );
 
 final imgFondo = AssetImage('assets/fondo.jpg');
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends State<LoginScreenDesktop> {
   @override
   Widget build(BuildContext context) {
     final txtRegistrer = Padding(
@@ -67,6 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
     final btnEmail = SocialLoginButton(
       buttonType: SocialLoginButtonType.generalLogin,
+      width: widthSize,
       onPressed: () {
         isLoading = true;
         setState(() {});
@@ -89,13 +101,17 @@ class _LoginScreenState extends State<LoginScreen> {
                 image: DecorationImage(
                     opacity: .6, fit: BoxFit.cover, image: imgFondo)),
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+              padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 30),
               child: Stack(
-                alignment: Alignment.topCenter,
+                alignment: Alignment.center,
                 children: [
                   Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
+                      imgLogo,
+                      spaceHorizontal,
+                      spaceHorizontal,
+                      spaceHorizontal,
                       Text(responsiveActual.toString()),
                       txtEmail,
                       spaceHorizontal,
@@ -112,10 +128,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       txtRegistrer,
                     ],
                   ),
-                  Positioned(
-                    child: imgLogo,
-                    top: 50,
-                  )
                 ],
               ),
             ),

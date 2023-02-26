@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/mainResponsive.dart';
 import 'package:flutter_application_1/provider/theme_provider.dart';
 import 'package:flutter_application_1/routes.dart';
 import 'package:flutter_application_1/screens/login_screen.dart';
@@ -30,7 +31,7 @@ class PMSNApp extends StatelessWidget {
       theme: theme.getThemeData(),
       routes: getApplicationRoutes(),
       home:
-          LoginScreen(), //login screen es un nuevo archivo dart donde se programa la pantalla de inicio de sesión
+          MainResponsive(), //login screen es un nuevo archivo dart donde se programa la pantalla de inicio de sesión
     );
   }
 }
