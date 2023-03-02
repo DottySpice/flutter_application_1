@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 
 class StylesSettings {
-  static ThemeData lightTheme(BuildContext context) {
+  static ThemeData lightTheme() {
     final theme = ThemeData.light();
-    return theme.copyWith(
-        colorScheme: Theme.of(context)
-            .colorScheme
-            .copyWith(primary: Color.fromARGB(255, 3, 90, 2)));
+    return theme;
   }
 
-  static ThemeData darkTheme(BuildContext context) {
+  static ThemeData darkTheme() {
+    final theme = ThemeData.dark();
+    return theme;
+  }
+
+  static ThemeData userTheme(BuildContext context) {
     final theme = ThemeData.dark();
     return theme.copyWith(
         colorScheme: Theme.of(context)
             .colorScheme
-            .copyWith(primary: Color.fromARGB(255, 2, 90, 90)));
+            .copyWith(primary: Color.fromARGB(255, 4, 155, 24)));
   }
 }

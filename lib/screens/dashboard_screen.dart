@@ -39,12 +39,19 @@ class _DashboardScreenState extends State<DashboardScreen> {
               leading: Icon(Icons.settings),
               trailing: Icon(Icons.chevron_right),
             ),
+            ListTile(
+              onTap: () {
+                Navigator.pushNamed(context, '/temas');
+              },
+              title: Text('Preferencias Temas'),
+              subtitle: Text("Selecciona la preferencia de tu tema"),
+              leading: Icon(Icons.settings),
+              trailing: Icon(Icons.chevron_right),
+            ),
             DayNightSwitcher(
                 isDarkModeEnabled: isDarkModeEnabled,
                 onStateChanged: (isDarkModeEnabled) {
-                  isDarkModeEnabled
-                      ? theme.setThemeData(StylesSettings.darkTheme(context))
-                      : theme.setThemeData(StylesSettings.lightTheme(context));
+                  isDarkModeEnabled ? theme.currentTheme : theme.currentTheme;
                   this.isDarkModeEnabled = isDarkModeEnabled;
                   setState(() {});
                 })
