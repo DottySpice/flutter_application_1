@@ -1,6 +1,7 @@
 import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/provider/theme_provider.dart';
+import 'package:flutter_application_1/screens/list_post.dart';
 import 'package:flutter_application_1/settings/styles.settings.dart';
 import 'package:provider/provider.dart';
 
@@ -20,18 +21,28 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('AMLO'),
+        title: Text('Bienvenido'),
+      ),
+      body: ListPost(),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          Navigator.pushNamed(context, '/addPost').then((value) {
+            setState(() {});
+          });
+        },
+        label: Text('Add Post'),
+        icon: Icon(Icons.add_comment),
+        backgroundColor: Colors.red,
       ),
       drawer: Drawer(
         child: ListView(
           children: [
             UserAccountsDrawerHeader(
                 currentAccountPicture: CircleAvatar(
-                  backgroundImage: NetworkImage(
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRE3nNWAJxusRTcwpB1hL2MwlgczPjIxIrelFNEGvANzZuiddRUjqb5YoDC6qR7bPQmHSY&usqp=CAU'),
+                  backgroundImage: NetworkImage(''),
                 ),
-                accountName: Text('LA MERA VERGA'),
-                accountEmail: Text('APOCO SI BIEN VERGA')),
+                accountName: Text('Maximiliano'),
+                accountEmail: Text('18031006@itcelaya.edu.mx')),
             ListTile(
               onTap: () {},
               title: Text('Practica 1'),
@@ -48,13 +59,24 @@ class _DashboardScreenState extends State<DashboardScreen> {
               leading: Icon(Icons.settings),
               trailing: Icon(Icons.chevron_right),
             ),
-            DayNightSwitcher(
-                isDarkModeEnabled: isDarkModeEnabled,
-                onStateChanged: (isDarkModeEnabled) {
-                  isDarkModeEnabled ? theme.currentTheme : theme.currentTheme;
-                  this.isDarkModeEnabled = isDarkModeEnabled;
-                  setState(() {});
-                })
+            ListTile(
+              onTap: () {
+                Navigator.pushNamed(context, '/apiMovies');
+              },
+              title: Text('Popular de API'),
+              subtitle: Text("Pantalla para ver las Popular de las APi"),
+              leading: Icon(Icons.settings),
+              trailing: Icon(Icons.movie),
+            ),
+            ListTile(
+              onTap: () {
+                Navigator.pushNamed(context, '/apiNoticias');
+              },
+              title: Text('Noticia de API'),
+              subtitle: Text("Pantalla para ver las Noticas usando una API"),
+              leading: Icon(Icons.settings),
+              trailing: Icon(Icons.newspaper),
+            ),
           ],
         ),
       ),

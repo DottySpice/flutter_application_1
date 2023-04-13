@@ -45,7 +45,7 @@ final spaceHorizontal = SizedBox(height: 10);
 
 final imgLogo = Image.asset(
   'assets/logo.png',
-  height: 100,
+  height: 60,
 );
 
 final imgFondo = AssetImage('assets/fondo.jpg');
@@ -89,13 +89,15 @@ class _LoginScreenState extends State<LoginScreen> {
                 image: DecorationImage(
                     opacity: .6, fit: BoxFit.cover, image: imgFondo)),
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-              child: Stack(
-                alignment: Alignment.topCenter,
-                children: [
-                  Column(
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
+              child: Container(
+                alignment: Alignment.center,
+                child: SingleChildScrollView(
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
+                      imgLogo,
+                      spaceHorizontal,
                       Text(responsiveActual.toString()),
                       txtEmail,
                       spaceHorizontal,
@@ -107,16 +109,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       spaceHorizontal,
                       btnFacebook,
                       spaceHorizontal,
-                      btnGithub,
-                      spaceHorizontal,
                       txtRegistrer,
                     ],
                   ),
-                  Positioned(
-                    child: imgLogo,
-                    top: 50,
-                  )
-                ],
+                ),
               ),
             ),
           ),

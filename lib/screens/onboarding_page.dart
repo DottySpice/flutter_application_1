@@ -17,7 +17,8 @@ class OnboardingPage extends StatelessWidget {
       backgroundColor: const Color.fromRGBO(0, 10, 56, 1),
       titleColor: Colors.pink,
       subtitleColor: Colors.white,
-      background: LottieBuilder.asset("assets/animation/bg-1.json"),
+      background:
+          Center(child: LottieBuilder.asset("assets/animation/bg-1.json")),
     ),
     CardPlanetData(
       title: "Ingeniería en Sistemas Computacionales",
@@ -27,7 +28,8 @@ class OnboardingPage extends StatelessWidget {
       backgroundColor: Colors.white,
       titleColor: Colors.purple,
       subtitleColor: const Color.fromRGBO(0, 10, 56, 1),
-      background: LottieBuilder.asset("assets/animation/bg-2.json"),
+      background:
+          Center(child: LottieBuilder.asset("assets/animation/bg-2.json")),
     ),
     CardPlanetData(
       title: "Misión",
@@ -39,7 +41,8 @@ class OnboardingPage extends StatelessWidget {
       backgroundColor: Color.fromARGB(255, 42, 5, 187),
       titleColor: Color.fromARGB(255, 0, 243, 252),
       subtitleColor: Colors.white,
-      background: LottieBuilder.asset("assets/animation/bg-3.json"),
+      background:
+          Center(child: LottieBuilder.asset("assets/animation/bg-3.json")),
     ),
   ];
 

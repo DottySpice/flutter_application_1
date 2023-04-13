@@ -16,9 +16,13 @@ class _MainResponsiveState extends State<MainResponsive> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ResponsiveLayout(
-        mobileBody: LoginScreen(),
-        desktopApp: LoginScreenDesktop(),
+      body: SafeArea(
+        child: ResponsiveLayout(
+          mobileBody: LoginScreen(),
+          desktopApp: Row(children: [
+            Expanded(child: LoginScreenDesktop()),
+          ]),
+        ),
       ),
     );
   }

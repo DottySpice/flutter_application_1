@@ -1,8 +1,10 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:social_login_buttons/social_login_buttons.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
+import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 
 class RegistrerScreen extends StatefulWidget {
   const RegistrerScreen({super.key});
@@ -10,6 +12,10 @@ class RegistrerScreen extends StatefulWidget {
   @override
   State<RegistrerScreen> createState() => _RegistrerScreenState();
 }
+
+final TextEditingController controller = new TextEditingController();
+final GlobalKey<FlutterPwValidatorState> validatorKey =
+    GlobalKey<FlutterPwValidatorState>();
 
 final txtAvatar = TextFormField(
   decoration: InputDecoration(
@@ -24,24 +30,17 @@ final txtEmail = TextFormField(
     border: OutlineInputBorder(),
   ),
   validator: (value) {
-    if (value!.isEmpty || !value.contains('@')) {
+    final bool isEmailValidate = EmailValidator.validate(value as String);
+    if (!isEmailValidate || value!.isEmpty) {
       return 'Ingrese un correo electronico valido';
     }
     return null;
   },
 );
 
-final txtPass = TextFormField(
-  decoration: InputDecoration(
-    label: Text('Password User'),
-    border: OutlineInputBorder(),
-  ),
-  validator: (value) {
-    if (value!.isEmpty || value.length < 8) {
-      return 'Ingrese una contraseña con mas de 8 digitos';
-    }
-    return null;
-  },
+final imgLogo = Image.asset(
+  'assets/logo.png',
+  height: 70,
 );
 
 final txtUser = TextFormField(
@@ -59,7 +58,7 @@ final txtUser = TextFormField(
 
 final txtRegistro = Text("Registro", style: TextStyle(fontSize: 25));
 
-final spaceHorizontal = SizedBox(height: 20);
+final spaceHorizontal = SizedBox(height: 10);
 
 final _formKey = GlobalKey<FormState>();
 
@@ -79,13 +78,59 @@ class _RegistrerScreenState extends State<RegistrerScreen> {
     });
   }
 
+  Future getImageCamara() async {
+    final image = await ImagePicker().pickImage(source: ImageSource.camera);
+    if (image == null) return;
+
+    final imageTemporaly = File(image.path);
+
+    setState(() {
+      this._image = imageTemporaly;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    bool validatePassword = false;
+
+    final txtPassValidate = FlutterPwValidator(
+        key: validatorKey,
+        specialCharCount: 1,
+        width: 500,
+        height: 100,
+        minLength: 8,
+        onSuccess: () {
+          validatePassword = true;
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text("Contrasena valida")));
+        },
+        controller: controller);
+
+    final txtPass = TextFormField(
+        controller: controller,
+        decoration: InputDecoration(
+          label: Text('Password User'),
+          border: OutlineInputBorder(borderSide: BorderSide()),
+        ),
+        validator: (value) {
+          if (!validatePassword) {
+            return 'Ingrese una contrasena correcta';
+          }
+          return null;
+        });
+
     final btnAvatar = SocialLoginButton(
       buttonType: SocialLoginButtonType.generalLogin,
       backgroundColor: Colors.blue,
-      text: 'Añadir foto',
+      text: 'Añadir foto de galeria',
       onPressed: getImage,
+    );
+
+    final btnAvatarCamara = SocialLoginButton(
+      buttonType: SocialLoginButtonType.generalLogin,
+      backgroundColor: Colors.blue,
+      text: 'Añadir foto de camara',
+      onPressed: getImageCamara,
     );
 
     final imgAvatar = _image != null
@@ -117,19 +162,20 @@ class _RegistrerScreenState extends State<RegistrerScreen> {
               image: DecorationImage(
                   opacity: .6, fit: BoxFit.cover, image: imgFondo)),
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-            child: Stack(
-              alignment: Alignment.topCenter,
-              children: [
-                Column(
+            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+            child: Container(
+              alignment: Alignment.center,
+              child: SingleChildScrollView(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    spaceHorizontal,
-                    spaceHorizontal,
-                    spaceHorizontal,
                     txtRegistro,
                     spaceHorizontal,
+                    imgAvatar,
+                    spaceHorizontal,
                     btnAvatar,
+                    spaceHorizontal,
+                    btnAvatarCamara,
                     spaceHorizontal,
                     txtUser,
                     spaceHorizontal,
@@ -137,14 +183,12 @@ class _RegistrerScreenState extends State<RegistrerScreen> {
                     spaceHorizontal,
                     txtPass,
                     spaceHorizontal,
+                    txtPassValidate,
+                    spaceHorizontal,
                     btnRegister,
                   ],
                 ),
-                Positioned(
-                  child: imgAvatar,
-                  top: 50,
-                )
-              ],
+              ),
             ),
           ),
         ),

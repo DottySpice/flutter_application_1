@@ -20,7 +20,7 @@ class DatabaseHelper {
     Directory folder = await getApplicationDocumentsDirectory();
     String pathDB = join(folder.path, nameDatabase);
 
-    await openDatabase(
+    return await openDatabase(
       pathDB,
       version: versionDB,
       onCreate: _createTables,

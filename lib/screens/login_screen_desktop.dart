@@ -56,7 +56,7 @@ final spaceHorizontal = SizedBox(height: 20);
 
 final imgLogo = Image.asset(
   'assets/logo.png',
-  height: 150,
+  height: 70,
 );
 
 final imgFondo = AssetImage('assets/fondo.jpg');
@@ -72,7 +72,7 @@ class _LoginScreenState extends State<LoginScreenDesktop> {
         },
         child: const Text("Crear cuenta",
             style:
-                TextStyle(fontSize: 15, decoration: TextDecoration.underline)),
+                TextStyle(fontSize: 10, decoration: TextDecoration.underline)),
       ),
     );
 
@@ -101,31 +101,27 @@ class _LoginScreenState extends State<LoginScreenDesktop> {
                 image: DecorationImage(
                     opacity: .6, fit: BoxFit.cover, image: imgFondo)),
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 30),
+              padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
               child: Stack(
                 alignment: Alignment.center,
                 children: [
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      imgLogo,
-                      spaceHorizontal,
-                      spaceHorizontal,
+                      Expanded(child: imgLogo),
                       spaceHorizontal,
                       Text(responsiveActual.toString()),
-                      txtEmail,
+                      Expanded(child: txtEmail),
                       spaceHorizontal,
-                      txtPass,
+                      Expanded(child: txtPass),
                       spaceHorizontal,
-                      btnEmail,
+                      Expanded(child: btnEmail),
                       spaceHorizontal,
-                      btnGoogle,
+                      Expanded(child: btnGoogle),
                       spaceHorizontal,
-                      btnFacebook,
+                      Expanded(child: btnFacebook),
                       spaceHorizontal,
-                      btnGithub,
-                      spaceHorizontal,
-                      txtRegistrer,
+                      Expanded(child: txtRegistrer),
                     ],
                   ),
                 ],
