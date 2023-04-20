@@ -49,6 +49,8 @@ dependencies:
   flutter_pw_validator: ^1.5.0
   http: ^0.13.5
   url_launcher: ^6.1.10
+  flutter_rating_bar: ^4.0.1
+  youtube_player_flutter: ^8.1.2
 
 
 dev_dependencies:

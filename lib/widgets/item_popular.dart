@@ -8,10 +8,15 @@ class ItemPopular extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FadeInImage(
-        fit: BoxFit.fill,
-        placeholder: AssetImage('assets/loading.gif'),
-        image: NetworkImage(
-            'https://image.tmdb.org/t/p/w500/${popularModel.posterPath}'));
+    return ClipRRect(
+      child: Hero(
+        tag: popularModel.id!,
+        child: FadeInImage(
+            fit: BoxFit.fitHeight,
+            placeholder: AssetImage('assets/loading.gif'),
+            image: NetworkImage(
+                'https://image.tmdb.org/t/p/w500/${popularModel.posterPath}')),
+      ),
+    );
   }
 }

@@ -5,6 +5,7 @@ import 'package:flutter_application_1/screens/list_popular_videos.dart';
 import 'package:flutter_application_1/screens/registrer_screen.dart';
 import 'package:flutter_application_1/screens/temas_preferencia.dart';
 import 'package:flutter_application_1/screens/list_noticias.dart';
+import 'package:flutter_application_1/screens/list_favorites.dart';
 
 Map<String, WidgetBuilder> getApplicationRoutes() {
   return <String, WidgetBuilder>{
@@ -14,5 +15,6 @@ Map<String, WidgetBuilder> getApplicationRoutes() {
     '/addPost': (BuildContext context) => AddPostScreen(),
     '/apiMovies': (BuildContext context) => ListPopularVideos(),
     '/apiNoticias': (BuildContext context) => ListNoticias(),
+    '/apiMoviesFav': (BuildContext context) => ListFavorites(),
   };
 }
