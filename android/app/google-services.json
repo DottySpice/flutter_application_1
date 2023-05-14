@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1035813794288",
+    "project_id": "tutoauth-d811c",
+    "storage_bucket": "tutoauth-d811c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1035813794288:android:4700b415fb4d9626ec2d35",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1035813794288-q6frvg438v1j2t7n4au3loh2k023re7b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCC9necHCRTM9QtYMpZzurCz6l-cLkpv00"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1035813794288-q6frvg438v1j2t7n4au3loh2k023re7b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:social_login_buttons/social_login_buttons.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../widgets/loading_modal_widget.dart';
 
@@ -11,6 +13,12 @@ class LoginScreen extends StatefulWidget {
 }
 
 bool isLoading = false;
+
+String userName = "";
+String profilePicture = "";
+String userEmail = "";
+final FirebaseAuth _auth = FirebaseAuth.instance;
+final GoogleSignIn _googleSignIn = GoogleSignIn();
 
 final txtEmail = TextFormField(
   decoration: InputDecoration(
@@ -26,18 +34,8 @@ final txtPass = TextFormField(
   ),
 );
 
-final btnGoogle = SocialLoginButton(
-  buttonType: SocialLoginButtonType.google,
-  onPressed: () {},
-);
-
 final btnFacebook = SocialLoginButton(
   buttonType: SocialLoginButtonType.facebook,
-  onPressed: () {},
-);
-
-final btnGithub = SocialLoginButton(
-  buttonType: SocialLoginButtonType.github,
   onPressed: () {},
 );
 
@@ -63,6 +61,64 @@ class _LoginScreenState extends State<LoginScreen> {
             style:
                 TextStyle(fontSize: 15, decoration: TextDecoration.underline)),
       ),
+    );
+
+    Future<Map<String, dynamic>> signInWithGitHub() async {
+      // Create a new provider
+      GithubAuthProvider githubProvider = GithubAuthProvider();
+
+      final UserCredential =
+          await FirebaseAuth.instance.signInWithProvider(githubProvider);
+
+      final User user = FirebaseAuth.instance.currentUser!;
+
+      final Map<String, dynamic> userInfo = {
+        'userName': user.displayName!,
+        'profilePicture': user.photoURL!,
+        'userEmail': ""
+      };
+
+      return userInfo;
+    }
+
+    final btnGithub = SocialLoginButton(
+      buttonType: SocialLoginButtonType.github,
+      onPressed: () async {
+        final Map<String, dynamic> userInfo = await signInWithGitHub();
+
+        Navigator.pushNamed(context, '/dash', arguments: userInfo);
+        signInWithGitHub();
+      },
+    );
+
+    Future<Map<String, dynamic>> signInWithGoogle() async {
+      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser!.authentication;
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+      final UserCredential userCredential =
+          await _auth.signInWithCredential(credential);
+      print("Inicio de sesión exitoso con Google y Firebase");
+
+      final Map<String, dynamic> userInfo = {
+        'userName': userCredential.user!.displayName!,
+        'profilePicture': userCredential.user!.photoURL!,
+        'userEmail': userCredential.user!.email!,
+      };
+
+      return userInfo;
+    }
+
+    final btnGoogle = SocialLoginButton(
+      buttonType: SocialLoginButtonType.google,
+      onPressed: () async {
+        final Map<String, dynamic> userInfo = await signInWithGoogle();
+
+        Navigator.pushNamed(context, '/dash', arguments: userInfo);
+      },
     );
 
     final btnEmail = SocialLoginButton(
@@ -107,7 +163,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       spaceHorizontal,
                       btnGoogle,
                       spaceHorizontal,
-                      btnFacebook,
+                      btnGithub,
                       spaceHorizontal,
                       txtRegistrer,
                     ],

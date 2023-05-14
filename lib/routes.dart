@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screens/add_post_screen.dart';
 import 'package:flutter_application_1/screens/dashboard_screen.dart';
+import 'package:flutter_application_1/screens/list_favorites_cloud.dart';
 import 'package:flutter_application_1/screens/list_popular_videos.dart';
+import 'package:flutter_application_1/screens/login_screen.dart';
+import 'package:flutter_application_1/screens/map_screen.dart';
 import 'package:flutter_application_1/screens/registrer_screen.dart';
 import 'package:flutter_application_1/screens/temas_preferencia.dart';
 import 'package:flutter_application_1/screens/list_noticias.dart';
@@ -16,5 +19,8 @@ Map<String, WidgetBuilder> getApplicationRoutes() {
     '/apiMovies': (BuildContext context) => ListPopularVideos(),
     '/apiNoticias': (BuildContext context) => ListNoticias(),
     '/apiMoviesFav': (BuildContext context) => ListFavorites(),
+    '/favFirebase': (BuildContext context) => ListFavoritesCloud(),
+    '/map': (BuildContext context) => MapSample(),
+    '/login': (BuildContext context) => LoginScreen(),
   };
 }
