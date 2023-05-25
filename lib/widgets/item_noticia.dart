@@ -30,8 +30,10 @@ class ItemNoticia extends StatelessWidget {
 
     return Container(
         child: Card(
+      color: Color.fromARGB(103, 215, 216, 218),
       child: Column(
         children: [
+          SizedBox(height: 5.0),
           Row(
             children: [
               Expanded(
@@ -39,6 +41,7 @@ class ItemNoticia extends StatelessWidget {
               )
             ],
           ),
+          SizedBox(height: 5.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -47,10 +50,12 @@ class ItemNoticia extends StatelessWidget {
               )
             ],
           ),
+          SizedBox(height: 5.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [imgPost],
           ),
+          SizedBox(height: 5.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -59,6 +64,7 @@ class ItemNoticia extends StatelessWidget {
               )
             ],
           ),
+          SizedBox(height: 5.0),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[

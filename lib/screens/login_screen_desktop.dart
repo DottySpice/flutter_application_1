@@ -101,30 +101,31 @@ class _LoginScreenState extends State<LoginScreenDesktop> {
                 image: DecorationImage(
                     opacity: .6, fit: BoxFit.cover, image: imgFondo)),
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-              child: Stack(
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
+              child: Container(
                 alignment: Alignment.center,
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Expanded(child: imgLogo),
-                      spaceHorizontal,
-                      Text(responsiveActual.toString()),
-                      Expanded(child: txtEmail),
-                      spaceHorizontal,
-                      Expanded(child: txtPass),
-                      spaceHorizontal,
-                      Expanded(child: btnEmail),
-                      spaceHorizontal,
-                      Expanded(child: btnGoogle),
-                      spaceHorizontal,
-                      Expanded(child: btnFacebook),
-                      spaceHorizontal,
-                      Expanded(child: txtRegistrer),
-                    ],
+                child: Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        imgLogo,
+                        spaceHorizontal,
+                        txtEmail,
+                        spaceHorizontal,
+                        txtPass,
+                        spaceHorizontal,
+                        btnEmail,
+                        spaceHorizontal,
+                        btnGoogle,
+                        spaceHorizontal,
+                        btnGithub,
+                        spaceHorizontal,
+                        txtRegistrer,
+                      ],
+                    ),
                   ),
-                ],
+                ),
               ),
             ),
           ),

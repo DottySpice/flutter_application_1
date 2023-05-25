@@ -30,6 +30,11 @@ class _TemasPageState extends State<TemasPage> {
                 onPressed: () {
                   theme.cambiarTemaClaro();
                 },
+                style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(Colors.blue),
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.white)),
                 child: Text("Tema Claro")),
             SizedBox(
               height: 10,
@@ -38,6 +43,11 @@ class _TemasPageState extends State<TemasPage> {
                 onPressed: () {
                   theme.cambiarTemaOscuro();
                 },
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                        Color.fromARGB(255, 0, 0, 0)),
+                    foregroundColor:
+                        MaterialStateProperty.all<Color>(Colors.white)),
                 child: Text("Tema Oscuro")),
             SizedBox(
               height: 10,
@@ -46,6 +56,11 @@ class _TemasPageState extends State<TemasPage> {
                 onPressed: () {
                   theme.cambiarTemaPersonalizado();
                 },
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                        Color.fromARGB(255, 0, 255, 0)),
+                    foregroundColor: MaterialStateProperty.all<Color>(
+                        Color.fromARGB(255, 0, 0, 0))),
                 child: Text("Tema Personalizado")),
             SizedBox(
               height: 10,

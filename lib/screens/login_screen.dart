@@ -154,7 +154,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       imgLogo,
                       spaceHorizontal,
-                      Text(responsiveActual.toString()),
                       txtEmail,
                       spaceHorizontal,
                       txtPass,

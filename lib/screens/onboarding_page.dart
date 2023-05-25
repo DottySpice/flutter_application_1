@@ -21,7 +21,7 @@ class OnboardingPage extends StatelessWidget {
           Center(child: LottieBuilder.asset("assets/animation/bg-1.json")),
     ),
     CardPlanetData(
-      title: "Ingeniería en Sistemas Computacionales",
+      title: "Sistemas Computacionales",
       subtitle:
           "El y la Ingeniero/a en Sistemas Computacionales, tiene conocimientos de alto nivel tecnológico y científico para ser un profesionista con visión innovadora capaz de crear y proveer soluciones de software e infraestructura computacional de vanguardia en la nueva y dinámica sociedad dela era digital.",
       image: const AssetImage("assets/images/img-2.png"),

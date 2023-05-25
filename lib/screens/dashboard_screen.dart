@@ -35,7 +35,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     final String profilePicture = userInfo['profilePicture'];
     final String userEmail = userInfo['userEmail'];
 
-// Acceda aquí a cualquier otra información del usuario que se haya pasado
+    // Acceda aquí a cualquier otra información del usuario que se haya pasado
     print(userName);
     print(profilePicture);
     print(userEmail);
@@ -65,38 +65,31 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 accountName: Text(userName),
                 accountEmail: Text(userEmail)),
             ListTile(
-              onTap: () {},
-              title: Text('Practica 1'),
-              subtitle: Text("Descripcion de la practica"),
-              leading: Icon(Icons.settings),
-              trailing: Icon(Icons.chevron_right),
-            ),
-            ListTile(
               onTap: () {
                 Navigator.pushNamed(context, '/temas');
               },
-              title: Text('Preferencias Temas'),
+              title: Text('Practica 3 / Temas Preferencias'),
               subtitle: Text("Selecciona la preferencia de tu tema"),
-              leading: Icon(Icons.settings),
+              leading: Icon(Icons.palette),
               trailing: Icon(Icons.chevron_right),
             ),
             ListTile(
               onTap: () {
                 Navigator.pushNamed(context, '/apiMovies');
               },
-              title: Text('Popular de API'),
-              subtitle: Text("Pantalla para ver las Popular de las APi"),
-              leading: Icon(Icons.settings),
-              trailing: Icon(Icons.movie),
+              title: Text('API de peliculas'),
+              subtitle: Text("Pantalla para ver las peliculas y favoritos"),
+              leading: Icon(Icons.movie),
+              trailing: Icon(Icons.favorite),
             ),
             ListTile(
               onTap: () {
                 Navigator.pushNamed(context, '/apiNoticias');
               },
-              title: Text('Noticia de API'),
+              title: Text('Practica 6 / API de noticias'),
               subtitle: Text("Pantalla para ver las Noticas usando una API"),
-              leading: Icon(Icons.settings),
-              trailing: Icon(Icons.newspaper),
+              leading: Icon(Icons.newspaper),
+              trailing: Icon(Icons.details),
             ),
             ListTile(
               onTap: () {
@@ -104,8 +97,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               },
               title: Text('Favoritos usando firebase'),
               subtitle: Text("Pantalla para ver favoritos usando firebase"),
-              leading: Icon(Icons.settings),
-              trailing: Icon(Icons.favorite),
+              trailing: Icon(Icons.cancel),
             ),
             ListTile(
               onTap: () {
@@ -113,8 +105,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               },
               title: Text('Mapa'),
               subtitle: Text("Pantalla para ver el mapa de Google "),
-              leading: Icon(Icons.settings),
-              trailing: Icon(Icons.favorite),
+              trailing: Icon(Icons.cancel),
             ),
             ListTile(
               leading: Icon(Icons.logout),

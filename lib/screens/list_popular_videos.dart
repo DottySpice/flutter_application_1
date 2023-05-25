@@ -36,10 +36,10 @@ class _ListPopularVideosState extends State<ListPopularVideos> {
                 return GridView.builder(
                   padding: EdgeInsets.all(15),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: .9,
+                      crossAxisCount: 3,
+                      childAspectRatio: .6,
                       mainAxisSpacing: 15,
-                      crossAxisSpacing: 15),
+                      crossAxisSpacing: 10),
                   itemCount: snapshot.data != null ? snapshot.data!.length : 0,
                   itemBuilder: (context, index) {
                     PopularModel model = snapshot.data![index];

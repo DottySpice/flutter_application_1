@@ -42,7 +42,7 @@ class CardPlanet extends StatelessWidget {
                 children: [
                   const Spacer(flex: 3),
                   Flexible(
-                    flex: 20,
+                    flex: 10,
                     child: Image(image: data.image),
                   ),
                   const Spacer(flex: 1),
@@ -54,7 +54,7 @@ class CardPlanet extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       letterSpacing: 1,
                     ),
-                    maxLines: 1,
+                    maxLines: 10,
                   ),
                   const Spacer(flex: 1),
                   Text(
@@ -64,7 +64,7 @@ class CardPlanet extends StatelessWidget {
                       fontSize: 16,
                     ),
                     textAlign: TextAlign.center,
-                    maxLines: 2,
+                    maxLines: 15,
                   ),
                   const Spacer(flex: 10),
                 ],

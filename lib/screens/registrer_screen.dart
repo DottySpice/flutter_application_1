@@ -119,19 +119,10 @@ class _RegistrerScreenState extends State<RegistrerScreen> {
           return null;
         });
 
-    final btnAvatar = SocialLoginButton(
-      buttonType: SocialLoginButtonType.generalLogin,
-      backgroundColor: Colors.blue,
-      text: 'Añadir foto de galeria',
-      onPressed: getImage,
-    );
+    final btnAvatar = IconButton(onPressed: getImage, icon: Icon(Icons.image));
 
-    final btnAvatarCamara = SocialLoginButton(
-      buttonType: SocialLoginButtonType.generalLogin,
-      backgroundColor: Colors.blue,
-      text: 'Añadir foto de camara',
-      onPressed: getImageCamara,
-    );
+    final btnAvatarCamara =
+        IconButton(onPressed: getImageCamara, icon: Icon(Icons.photo_camera));
 
     final imgAvatar = _image != null
         ? Image.file(
@@ -148,8 +139,9 @@ class _RegistrerScreenState extends State<RegistrerScreen> {
       onPressed: () {
         if (_formKey.currentState!.validate()) {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Procesando datos')),
+            const SnackBar(content: Text('Datos aceptados')),
           );
+          Navigator.pushNamed(context, '/login');
         }
       },
     );
@@ -173,9 +165,10 @@ class _RegistrerScreenState extends State<RegistrerScreen> {
                     spaceHorizontal,
                     imgAvatar,
                     spaceHorizontal,
-                    btnAvatar,
-                    spaceHorizontal,
-                    btnAvatarCamara,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [btnAvatarCamara, btnAvatar],
+                    ),
                     spaceHorizontal,
                     txtUser,
                     spaceHorizontal,
